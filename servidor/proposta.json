@@ -1,0 +1,25 @@
+{
+    "informacoesBeneficiarios": {
+        "quantidade": 2,
+        "idade": [
+            25
+        ],
+        "nome": [
+            "Gabriel"
+        ]
+    },
+    "plano": {
+        "registro": "reg5",
+        "nome": "Bitix Customer Plano 5",
+        "codigo": 5
+    },
+    "precos": {
+        "precoPorBeneficiario": [
+            {
+                "preco": 60,
+                "idade": 25
+            }
+        ],
+        "precoTotal": 60
+    }
+}
