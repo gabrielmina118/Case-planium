@@ -1,8 +1,10 @@
 import { ButtonStyled, InputMaterial } from "../form/styled"
+import { FormBeneficiario } from "./styled"
 
 export const InputForm = (props) =>{
     return(
-        <form onSubmit={props.onsubmitForm}>
+        <FormBeneficiario onSubmit={props.onsubmitForm}>
+           <h2>Cadastro do beneficiario</h2>
           <InputMaterial
             placeholder="Digite seu nome"
             type={"text"}
@@ -27,7 +29,7 @@ export const InputForm = (props) =>{
             value={props.plano}
             onChange={(e) => props.setPlano(e.target.value)}
           />
-          <ButtonStyled type="submit">Enviar</ButtonStyled>
-        </form>
+          <ButtonStyled onClick={props.enviarDados}>Enviar</ButtonStyled>
+        </FormBeneficiario>
     )
 }

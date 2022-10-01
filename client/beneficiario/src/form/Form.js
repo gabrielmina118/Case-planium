@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Main } from "./styled";
+import { ButtonStyled, Main } from "./styled";
 import { InputForm } from "../componente/InputForm";
+import { InputFormDependente } from "../componente/InputFormDependente";
 
 /*
   {
@@ -15,17 +16,23 @@ import { InputForm } from "../componente/InputForm";
 
 export const Form = () => {
   const [nome, setNome] = useState();
-  const [idade, setIdade] = useState([]);
+  const [idade, setIdade] = useState();
   const [quantidade, setQuantidade] = useState();
   const [plano, setPlano] = useState();
+  const [novoDependente, setNovoDependente] = useState([]);
 
   const onsubmitForm = (event) => {
     event.preventDefault();
     enviarDados();
   };
 
+  const onSubmitFormDependente = (event) => {
+    event.preventDefault();
+  };
+
   const enviarDados = async () => {
-    const arrayNomes = [nome];
+    // unir 2 arrays
+    const arrayNomes = [nome].concat(novoDependente);
 
     const body = {
       nome: arrayNomes,
@@ -35,21 +42,35 @@ export const Form = () => {
     };
 
     console.log(body);
-    
-    await axios
-      .post("http://localhost:3003/beneficiario/criar", body)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+
+    // await axios
+    //   .post("http://localhost:3003/beneficiario/criar", body)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
   };
- 
+
+  const adicionaNovoCampo = () => {
+    setNovoDependente([...novoDependente, ""]);
+  };
+
+  const onChangeNovoDependente = (e, index) => {
+    novoDependente[index] = e.target.value;
+    setNovoDependente([...novoDependente]);
+  };
+
   return (
-    <Main>
+    <>
       <h2>CADASTRO DE BENEFICIÁRIOS</h2>
+      <ButtonStyled onClick={adicionaNovoCampo}>
+        Adicinar um dependente
+      </ButtonStyled>
+      <Main>
         <InputForm
+          enviarDados={enviarDados}
           onsubmitForm={onsubmitForm}
           nome={nome}
           idade={idade}
@@ -60,6 +81,22 @@ export const Form = () => {
           setQuantidade={setQuantidade}
           setPlano={setPlano}
         />
-    </Main>
+        {novoDependente.length > 0 ? (
+          novoDependente.map((dependente, index) => {
+            return (
+              <InputFormDependente
+                onSubmitFormDependente={onSubmitFormDependente}
+                dependente={dependente}
+                index={index}
+                onChangeNovoDependente={onChangeNovoDependente}
+                enviarDados={enviarDados}
+              />
+            );
+          })
+        ) : (
+          <p>Sem dependente</p>
+        )}
+      </Main>
+    </>
   );
 };
