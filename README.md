@@ -1,4 +1,13 @@
 
+## Desenvolvido por: 
+### :construction_worker: Gabriel Mina da Silva
+
+#### Primeiros passos
+
+1. Clone o repositório;
+2. Dê um  npm install;
+4. Acesse o nosso código
+
 <img src="https://www.planium.io/wordpress/wp-content/uploads/2018/11/logo-Planium-06.svg" width="250" height="100">
 **[Especificações para o teste]**
 
