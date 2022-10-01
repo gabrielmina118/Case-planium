@@ -40,7 +40,6 @@ export const Form = () => {
       plano: Number(plano),
     };
 
-    console.log(body);
     await axios
       .post("http://localhost:3003/beneficiario/criar", body)
       .then((res) => {
