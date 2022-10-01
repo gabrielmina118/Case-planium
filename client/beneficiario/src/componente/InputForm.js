@@ -17,12 +17,7 @@ export const InputForm = (props) =>{
             value={props.idade}
             onChange={(e) => props.setIdade(e.target.value)}
           />
-          <InputMaterial
-            placeholder="Digite a quantidade de dependentes"
-            type={"number"}
-            value={props.quantidade}
-            onChange={(e) => props.setQuantidade(e.target.value)}
-          />
+         
           <InputMaterial
             placeholder="Digite o numero do plano"
             type={"number"}

@@ -2,10 +2,10 @@ POST http://localhost:3003/beneficiario/criar
 Content-Type: application/json
 
 {
-    "quantidade": 2,
+    "quantidade": 1,
     "idade": [16, 25],
     "nome": ["Janaylla", "larissa"],
-    "plano": 6
+    "plano": 10
 }
 
 ###

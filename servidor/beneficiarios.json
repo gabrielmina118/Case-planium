@@ -1,10 +1,10 @@
 {
     "nome": [
-        "Gabriel"
+        null
     ],
     "idade": [
-        25
+        20
     ],
-    "quantidade": 2,
-    "plano": 5
+    "quantidade": 1,
+    "plano": 4
 }

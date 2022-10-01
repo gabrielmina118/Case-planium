@@ -17,7 +17,6 @@ import { InputFormDependente } from "../componente/InputFormDependente";
 export const Form = () => {
   const [nome, setNome] = useState();
   const [idade, setIdade] = useState();
-  const [quantidade, setQuantidade] = useState();
   const [plano, setPlano] = useState();
   const [novoDependente, setNovoDependente] = useState([]);
 
@@ -37,20 +36,19 @@ export const Form = () => {
     const body = {
       nome: arrayNomes,
       idade: [Number(idade)],
-      quantidade: Number(quantidade),
+      quantidade: Number(arrayNomes.length),
       plano: Number(plano),
     };
 
     console.log(body);
-
-    // await axios
-    //   .post("http://localhost:3003/beneficiario/criar", body)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+    await axios
+      .post("http://localhost:3003/beneficiario/criar", body)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
   };
 
   const adicionaNovoCampo = () => {
@@ -74,11 +72,9 @@ export const Form = () => {
           onsubmitForm={onsubmitForm}
           nome={nome}
           idade={idade}
-          quantidade={quantidade}
           plano={plano}
           setNome={setNome}
           setIdade={setIdade}
-          setQuantidade={setQuantidade}
           setPlano={setPlano}
         />
         {novoDependente.length > 0 ? (
